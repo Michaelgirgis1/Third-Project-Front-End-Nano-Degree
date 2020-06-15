@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = {};
+projectData = [];
 
 // Express to run server and routes
 const express = require('express');
@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 
 // Cors for cross origin allowance
 const cors = require('cors');
+const { response } = require('express');
 app.use(cors());
 
 // Initialize the main project folder
@@ -24,36 +25,26 @@ app.use(express.static('website'));
 const port = 8080;
 // Setup Server
 // const server = app.listen(port, listening);
-app.get('/', function (req, res) {
-    res.send('Hello World!')
-    
-})
+
 app.listen(port, function (){
     console.log(`Example app listening at http://localhost:${port}`)
 })
-   
-app.post('/add', addAnimal);
+app.get('/allData', addWeather);
 
-function addAnimal(req,res){
-
-  newEntry = {
-    animal: req.body.temperature,
-    facts: req.body.date,
-    fav: req.body.user
-  }
-
-  projectData.push(newEntry)
-  console.log(animalData)
+function addWeather(request,response){   
+  projectData.push(request.body)
+  console.log(projectData)
+  projectData = []
 }
 
 
-//fake Api
-// const fakeApi = {
-//     id: '624852',
-//     feeling: 'i am really happy'
-// }
+app.post("/addData", addData);
 
-// app.get('/fakefeeling', getFakeData);
-//  function getFakeData(req, res){
-//          res.send(fakeApi)
-//  }
+function addData(request, response){
+    newEntry = {
+        date: request.body.date,
+        temperature: request.body.temp,
+        feeling: request.body.feeling
+    }
+    projectData.push(newEntry)
+}
