@@ -6,7 +6,7 @@ let newDate = d.getMonth()+1+ '.'+ d.getDate()+'.'+ d.getFullYear();
 
 // Personal API Key for OpenWeatherMap API
 let baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip='
-const apiKey = '&appid=10c08788a187a61da26a8b01fbe1177a';
+const apiKey = '&appid=10c08788a187a61da26a8b01fbe1177a&units=imperial';
 
 
 // Event listener to add function to existing HTML DOM element
@@ -43,7 +43,7 @@ const postData = async ( url = '', data = {})=>{
       method: 'POST', 
       credentials: 'same-origin',
       headers: {
-          'Content-Type': 'text/plain',
+          'Content-Type': 'application/json',
       },
      // Body data type must match "Content-Type" header        
       body: JSON.stringify(data), 

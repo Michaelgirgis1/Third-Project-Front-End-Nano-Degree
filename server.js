@@ -16,7 +16,6 @@ app.use(bodyParser.json());
 
 // Cors for cross origin allowance
 const cors = require('cors');
-const { response } = require('express');
 app.use(cors());
 
 // Initialize the main project folder
@@ -34,6 +33,7 @@ app.get('/allData', addWeather);
 function addWeather(request,response){   
   response.send(projectData)
   console.log(projectData)
+  projectData = [];
 }
 
 
