@@ -15,11 +15,16 @@ body{
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
 }
-/* 
-.holder{
+
+.entry{
+
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    background: rgba(59, 74, 107, .4);;
 
 }
-
+/*
 .entry{
     background: rgba(59, 74, 107, .4);
 }
